@@ -1,0 +1,213 @@
+<div class="flex flex-col bg-[#111827]">
+
+  <div class="bg-[#1f2937] text-white shadow w-full p-2 flex items-center justify-between">
+
+    <div class="">
+      <a routerLink="/"><img  src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="w-28 h-18 mr-2"></a>
+
+    </div>
+
+
+  <div class="p-2">
+    <button routerLink="/" id="menuBtn">
+      <i class="fas fa-bars text-gray-200 text-lg">LogOut</i>
+    </button>
+  </div>
+
+
+</div>
+
+  <div class="flex-1 flex flex-wrap">
+
+
+    <div class="flex-1 p-4 w-full md:w-1/2 ">
+
+
+      <div class="mt-8 flex flex-wrap space-x-0 space-y-2 md:space-x-4 md:space-y-0 ">
+        <div class=" flex-1 bg-[#082f49] p-4 shadow rounded-lg md:w-1/2">
+          <h2 class="text-gray-200 text-lg font-semibold pb-1">Companies</h2>
+          <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+          <div class="chart-container" >
+            <table  mat-table [dataSource]="companiesApproved!" matSort class="mat-elevation-z12">
+
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td mat-cell *matCellDef="let warehouse">{{warehouse.name}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                <td mat-cell *matCellDef="let warehouse">{{warehouse.email}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+                <td mat-cell *matCellDef="let warehouse">{{warehouse.address}}</td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsApproved"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsApproved;"></tr>
+
+            </table>
+          </div>
+        </div>
+
+        <div class="flex-1 bg-[#082f49] p-4 shadow rounded-lg md:w-1/2">
+          <h2 class="text-gray-200 text-lg font-semibold pb-1">Vendors</h2>
+          <div class="my-1"></div>
+          <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+          <div class="chart-container" >
+            <table mat-table [dataSource]="vendorsApproved!" matSort class="mat-elevation-z12">
+
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td mat-cell *matCellDef="let warehouse">{{warehouse.name}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                <td mat-cell *matCellDef="let warehouse">{{warehouse.email}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+                <td mat-cell *matCellDef="let warehouse">{{warehouse.address}}</td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsApproved"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsApproved;"></tr>
+
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-[#082f49] p-4 shadow rounded-lg">
+        <h2 class="text-gray-200 text-lg font-semibold pb-4">Company Approvals</h2>
+
+        <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+        <table mat-table [dataSource]="companiesPendingApproval!" matSort class="mat-elevation-z12">
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let warehouse">{{warehouse.name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+            <td mat-cell *matCellDef="let warehouse">{{warehouse.email}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+            <td mat-cell *matCellDef="let warehouse">{{warehouse.address}}</td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let warehouse"> <button class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded"
+                (click)="onApproveCompany(warehouse.id)">Approve</button> </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+
+
+      </div>
+
+      <div class="mt-8 bg-[#082f49] p-4 shadow rounded-lg">
+
+          <h2 class="text-gray-200 text-lg font-semibold pb-4">Vendor Approvals</h2>
+          <div class="my-1"></div>
+          <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+          <table mat-table [dataSource]="vendorsPendingApproval!" matSort class="mat-elevation-z12">
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+              <td mat-cell *matCellDef="let warehouse">{{warehouse.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+              <td mat-cell *matCellDef="let warehouse">{{warehouse.email}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="address">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+              <td mat-cell *matCellDef="let warehouse">{{warehouse.address}}</td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let warehouse"> <button class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded"
+                  (click)="onApproveVendor(warehouse.id)">Approve</button> </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          </table>
+          <div class="text-right mt-4">
+
+          </div>
+
+      </div>
+
+      <div class="mt-8 bg-[#082f49] p-4 shadow rounded-lg">
+
+          <h2 class="text-gray-200 text-lg font-semibold pb-4">Mapping</h2>
+
+          <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+          <table mat-table [dataSource]="companiesApproved!" matSort class="mat-elevation-z12">
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+              <td mat-cell *matCellDef="let company">{{company.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+              <td mat-cell *matCellDef="let company">{{company.email}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="address">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+              <td mat-cell *matCellDef="let company">{{company.address}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="vendor">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor</th>
+              <td mat-cell *matCellDef="let company">{{company.vendorName ? company.vendorName : "Not Assigned"}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+
+              <th mat-header-cell *matHeaderCellDef> Vendor </th>
+              <td mat-cell  *matCellDef="let company">
+
+
+              <select (change)="vendorAssigned($event, company.id)" id="countries" [disabled]="company.vendorId!=''"
+                class="inline bg-transparent border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-600 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option  value="" disabled selected hidden>Assign</option>
+                <option  *ngFor="let v of vendorsWithoutCompany" [value]="v.id" > {{ v.name }}</option>
+              </select>
+
+              <select (change)="vendorChanged($event, company.id)" id="countries" [disabled]="company.vendorId==''"
+                class="inline bg-transparent border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-transparent dark:border-gray-600 dark:placeholder-gray-600 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option  value="" disabled selected hidden>Change</option>
+                <option  *ngFor="let v of vendorsWithoutCompany" [value]="v.id" > {{ v.name }}</option>
+              </select>
+
+               </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="mapdisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: mapdisplayedColumns;"></tr>
+
+          </table>
+          <div class="text-right mt-4">
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

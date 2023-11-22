@@ -1,0 +1,122 @@
+
+<div class="flex flex-col bg-[#111827] min-h-screen">
+
+
+  <div class="bg-[#1f2937] text-white shadow w-full p-2 flex items-center justify-between">
+
+    <div class="">
+      <a routerLink="/"><img  src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="w-28 h-18 mr-2"></a>
+
+    </div>
+
+
+  <div class="p-2">
+    <button routerLink="/" id="menuBtn">
+      <i class="fas fa-bars text-gray-200 text-lg">LogOut</i>
+    </button>
+  </div>
+
+
+
+</div>
+
+
+  <div class="flex-1 flex flex-wrap">
+
+
+
+    <div class="flex-1 p-4 w-full md:w-1/2 ">
+
+
+
+
+      <div class="mt-8 flex flex-wrap space-x-0 space-y-2 md:space-x-4 md:space-y-0 ">
+
+
+        <div class=" flex-1 bg-[#082f49] p-4 shadow rounded-lg md:w-1/2">
+          <h2 class="text-gray-200 text-lg font-semibold pb-1">{{employee.name}}</h2>
+
+          <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+          <div class="chart-container" >
+
+            <h2 class="text-2xl font-semibold text-gray-200">Email:{{employee.email}}</h2>
+            <h2 class="text-2xl font-semibold text-gray-200">Phone:{{employee.phone}}</h2>
+            <h2 class="text-2xl font-semibold text-gray-200">Company:{{companyName}}</h2>
+            <h3 class="text-2xl font-semibold text-gray-200">Address: {{employee.address}}</h3>
+          </div>
+        </div>
+
+
+
+        <div class="flex-1 bg-[#082f49] p-4 shadow rounded-lg md:w-1/2">
+          <h2 class="text-gray-200 text-lg font-semibold pb-1">Book Cab</h2>
+          <div class="my-1"></div>
+          <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+          <div class="chart-container" >
+            <form [formGroup]="addressForm" class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
+
+
+
+
+
+
+              <div class="col-span-2">
+                <label class="block text-gray-200">PickUp Location</label>
+                <input formControlName="pickupAddress" type="text" placeholder="Address" class="block w-full px-5 py-3 mt-2 text-gray-200 placeholder-gray-400 bg-transparent border border-gray-200 rounded-md focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              </div>
+
+              <div class="col-span-2">
+                <label class="block text-gray-200">DropOff Location</label>
+                <input formControlName="dropoffAddress" type="text" placeholder="Address" class="block w-full px-5 py-3 mt-2 text-gray-200 placeholder-gray-400 bg-transparent border border-gray-200 rounded-md focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              </div>
+
+              <div *ngIf="!bookedCar" class="col-span-2">
+                <button (click)="onBook()"
+              class="flex items-center justify-center w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+              <span>Book Cab </span>
+
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rtl:-scale-x-100" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd" />
+              </svg>
+            </button></div>
+              </form>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="bookedCar" class="mt-8 bg-[#082f49] p-4 shadow rounded-lg">
+
+        <h2 class="text-gray-200 text-lg font-semibold pb-4">Cab Booked</h2>
+
+        <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6 "></div>
+
+        <div class="inline text-gray-200 p-2">{{bookedCar.registrationNo}}</div>
+        <button (click)="endRide()"
+              class="inline items-end justify-center mr-4 px-4 py-1 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+              <span>End Ride</span>
+            </button>
+        <div class="text-right mt-4">
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div *ngIf="bookedCar" class="mt-8 flex flex-wrap space-x-0 space-y-2 md:space-x-4 md:space-y-0 ">
+      <div class=" flex-1 bg-[#082f49] p-4 shadow rounded-lg md:w-1/2">
+        <h2 class="text-gray-200 text-lg font-semibold pb-1">Car's Location</h2>
+        <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+        <div class="chart-container" >
+          <app-map></app-map>
+        </div>
+      </div>
+  </div>
+</div>
+

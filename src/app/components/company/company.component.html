@@ -1,0 +1,71 @@
+
+
+<div class="flex flex-col bg-[#111827] min-h-screen">
+
+  <div class="bg-[#1f2937] text-white shadow w-full p-2 flex items-center justify-between">
+
+    <div class="">
+      <a routerLink="/"><img  src="https://www.emprenderconactitud.com/img/POC%20WCS%20(1).png" alt="Logo" class="w-28 h-18 mr-2"></a>
+
+    </div>
+
+
+  <div class="p-2">
+    <button routerLink="/" id="menuBtn">
+      <i class="fas fa-bars text-gray-200 text-lg">LogOut</i>
+    </button>
+  </div>
+
+</div>
+
+  <div class="flex-1 flex flex-wrap">
+
+
+    <div class="flex-1 p-4 w-full md:w-1/2 ">
+
+      <div class="mt-8 flex flex-wrap space-x-0 space-y-2 md:space-x-4 md:space-y-0 ">
+
+        <div class=" flex-1 bg-[#082f49] p-4 shadow rounded-lg md:w-1/2">
+          <h1 class="text-2xl font-semibold text-gray-200">{{company.name}}</h1>
+          <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+          <div class="chart-container" >
+
+
+            <h2 class="text-2xl font-semibold text-gray-200">Email:{{company.email}}</h2>
+            <h2 class="text-2xl font-semibold text-gray-200">Phone:{{company.phone}}</h2>
+            <h2 class="text-2xl font-semibold text-gray-200">User Name: {{company.userName}}</h2>
+
+            <h2 class="text-2xl font-semibold text-gray-200">Approval Status: {{company.approvalStatus ? "Approved" : "Pending"}}</h2>
+            <h3 class="text-2xl font-semibold text-gray-200">Address: {{company.address}}</h3>
+
+          </div>
+        </div>
+
+        <div class="flex-1 bg-[#082f49] p-4 shadow rounded-lg md:w-1/2">
+          <h2 class="text-gray-200 text-lg font-semibold pb-1">Book Cab</h2>
+          <div class="my-1"></div>
+          <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+          <div class="chart-container" >
+            <table mat-table [dataSource]="employees!" matSort class="mat-elevation-z12" >
+
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td mat-cell *matCellDef="let warehouse">{{warehouse.name}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef >Address</th>
+                <td mat-cell *matCellDef="let warehouse">{{warehouse.address}}</td>
+              </ng-container>
+              <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+                <td mat-cell *matCellDef="let warehouse">{{warehouse.email}}</td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+          </div>
+        </div>
+      </div>
+
